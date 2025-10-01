@@ -33,7 +33,7 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 	<link rel="icon" type="image/png" href="{{ asset('kcnew/frontend/img/image_iconLogo.png') }}"  sizes="160x160">
 
 	<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
-	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="{{ asset('blog_template/css/animate.css') }}">
 	<!-- Icomoon Icon Fonts-->
@@ -64,7 +64,7 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 	<!-- =====  CSS - Teamplate KCNEWS =========== -->
 
@@ -108,12 +108,13 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 					<ul class="header--topbar-info nav">
 						<li>
 							<a href="{{ route('home') }}">
-								<img style="border-radius: 12px; height: 40px;" src="{{ asset('kcnew/frontend/img/image_logo.png') }}" alt="logo">
+								<h4 style="font-weight:bold">VĂN PHÒNG CÔNG CHỨNG TÂM ĐỨC</h4>
 							</a>
 						</li>
-						<li><i class="fa fm fa-map-marker"></i>Hồ Chí Minh</li>
-						<li><i class="fa fm fa-mixcloud"></i>28<sup>0</sup> C</li>
-						<li style="text-transform: capitalize" ><i class="fa fm fa-calendar"></i>Hôm nay ( {{ $now->translatedFormat('l') }}, Ngày {{ $now->translatedFormat('jS F')}} Năm {{ $now->translatedFormat('Y')}} )</li>
+						<li><i class="fa fm fa-map-marker"></i>Đường Hùng Vương, Phường Long Khánh, Đồng Nai</li>
+						
+						<li style="text-transform: capitalize" ><i class="fa fm fa-phone"></i>
+						0909 999 999 - 0123 456 789</li>
 					</ul>
 					<!-- Header Topbar Info End -->
 				</div>
@@ -166,11 +167,11 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 	
 					<!-- Header Topbar Social Start -->
 					<ul class="header--topbar-social nav hidden-sm hidden-xxs">
-						<li><a href="https://www.facebook.com/people/Anh-Tuan/100007007238964"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-rss"></i></a></li>
-						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-youtube-play"></i></a></li>
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa fa-rss"></i></a></li>
+						<li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
 					</ul>
 					<!-- Header Topbar Social End -->
 				</div>
@@ -179,7 +180,7 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 		<!-- Header Topbar End -->
 	
 		<!-- Header Navbar Start -->
-		<div class="header--navbar navbar bd--color-1 bg--color-0" data-trigger="sticky">
+		<div class="header--navbar navbar navbar-expand-lg bd--color-1 bg--color-0" data-trigger="sticky">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#headerNav"
@@ -191,7 +192,7 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 					</button>
 				</div>
 	
-				<div id="headerNav" class="navbar-collapse collapse float--left">
+				<div id="headerNav" class="navbar-collapse collapse float--left d-flex ">
 					<!-- Header Menu Links Start -->
 					<ul class="header--menu-links nav navbar-nav" data-trigger="hoverIntent">
 						<li>
@@ -204,20 +205,19 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 						@endforeach
 
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Trang<i
-									class="fa flm fa-angle-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Trang</a>
 							<ul class="dropdown-menu">
 								<li><a href="{{ route('about') }}">Giới thiệu</a></li>
 								<li><a href="{{ route('contact.create') }}">Liên hệ</a></li>
-								<li><a href="{{ route('erorrs.404') }}">404</a></li>
+								<!-- <li><a href="{{ route('erorrs.404') }}">404</a></li> -->
 							</ul>
 						</li>
-						<li>
+						<!-- <li>
 							<a href="{{ route('categories.index') }}">
 								<span style="color: #ccc; margin-right: 10px;">Tất cả</span>
 								<img  width="17" class="icon-menu" src="https://static.vnncdn.net/v1/icon/menu-center.svg">
 							</a>
-						</li>
+						</li> -->
 					</ul>
 					<!-- Header Menu Links End -->
 				</div>
@@ -241,8 +241,8 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 	<div id="page" class="wrapper">
 	
 		<!-- Posts Filter Bar Start -->
-		<div class="posts--filter-bar style--3 hidden-xs">
-			<div class="container">
+		<div class="posts--filter-bar style--3 hidden-xs ">
+			<div class="container d-flex justify-content-center">
 				<ul class="nav">
 					<li>
 						<a href="{{ route('newPost') }}">
@@ -269,7 +269,7 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 
 		<!-- News Ticker Start -->
 		<div class="news--ticker">
-			<div class="container">
+			<div class="container m-5">
 				<div class="title">
 					<h2>Tin mới cập nhật</h2>
 				</div>
@@ -291,109 +291,78 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 	</div>
 	
 
-	<footer id="colorlib-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-2   colorlib-widget">
-					<ul class="colorlib-footer-links">
-						<li><a href="{{ route('home') }}"></i>Trang chủ</a></li>
-						<li><a href="{{ route('about') }}"></i>Giới thiệu</a></li>
-						<li><a href="{{ route('contact.create') }}"></i>Liên hệ</a></li>
-						<li><a href="{{ route('contact.create') }}"></i>Mới nhất</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2  colorlib-widget">
-						<ul class="colorlib-footer-links">
-							@for($i = 0; $i < 4; $i++)
-							<li><a href="{{ route('categories.show', $categoryFooter[$i] ) }}">{{ $categoryFooter[$i]->name }}</a></li>
-							@endfor
-							
-						</ul>
-				</div>
-				<div class="col-md-2  colorlib-widget">
-						<ul class="colorlib-footer-links">
-							@for($i = 4; $i < 8; $i++)
-							<li><a href="{{ route('categories.show', $categoryFooter[$i] ) }}">{{ $categoryFooter[$i]->name }}</a></li>
-							@endfor
-							
-						</ul>
-				</div>
-
-				<div class="col-md-2  colorlib-widget">
-						<ul class="colorlib-footer-links">
-							@for($i = 8; $i < 12; $i++)
-							<li><a href="{{ route('categories.show', $categoryFooter[$i] ) }}">{{ $categoryFooter[$i]->name }}</a></li>
-							@endfor
-						</ul>
-				</div>
-
-				<div class="col-md-4 ">
-					<h4>Theo dõi chúng tôi</h4>
-					<div class="row">
-						<div class="col-md-12">
-							<form  class="form-inline qbstp-header-subscribe">
-									<div class="form-group">
-										<input name='subscribe-email' type="email" required class="form-control" id="email" placeholder="Nhập email của bạn">
-									</div>
-									<div class="form-group ">
-										<button id='subscibe-btn'   type="submit" class="btn btn-primary">Đăng ký ngay</button>
-									</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		
-		</div>
-
-
-	
-		<div class="container">
-			<div style=" padding: 15px 0; display: flex;" class=" row">
-				<div class="col-md-4">
-					<p>
-						<a href="{{ route('home') }}">
-							<img style="border-radius: 12px; width: 120px;" src="{{ asset('kcnew/frontend/img/image_logo.png') }}" alt="logo">
-						</a>
-					</p>
-					<p>
-						<span style="font-size: 14px" class="block">Báo tiếng Việt nhiều người xem nhất</span>
-					</p>
-					<p>
-						<span style="font-size: 14px" class="block">Thuộc Bộ Khoa học Công nghệ</span>
-					</p>
-					<p>
-						<span style="font-size: 14px" class="block">Số giấy phép: 548/GP-BTTTT ngày 27/06/2022</span>
-					</p>
-				</div>
-				<div class="col-md-4">
-					<p>
-						<span style="font-size: 14px" class="block">Tổng biên tập: Nhóm TDQ Hutech</span>
-					</p>
-					<p>
-						<span style="font-size: 14px" class="block">Địa chỉ: E1, Khu Công Nghệ cao, Phường Hiệp Phú, TP.HCM</span>
-					</p>
-					<p>
-						<span style="font-size: 14px" class="block">Điện thoại: 0392766630</span>
-					</p>
-				</div>
-				<div class="col-md-4">
-					<p>
-						<small style="font-size: 14px" class="block">&copy; 2022. Toàn bộ bản quyền thuộc DTQ</small>
-					</p>
-					<p>
-						<ul style="display: flex;" class="header--topbar-social nav hidden-sm hidden-xxs">
-							<li><a href="https://www.facebook.com/people/Anh-Tuan/100007007238964"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-rss"></i></a></li>
-							<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-youtube-play"></i></a></li>
-						</ul>
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<footer id="footer">
+        <div class="container">
+            <div class="row footer__bottom">
+                <div class="col-xl-4 footer__item wow animated">
+					<h4>VĂN PHÒNG CÔNG CHỨNG TÂM ĐỨC</h4>
+                   
+                    <ul class="footer__contact">
+                        <li>
+                            <i class="fa fa-phone"></i>1800-123-4567 <br> +91 987-654-3210
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope"></i>info@example.com <br> services@gmail.com
+                        </li>
+                        <li>
+                            <i class="fa fa-map-marker-alt"></i> Demo Address #8901 Marmora <br>Road City
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-4 footer__item wow animated">
+                    <h3>Our Links</h3>
+                    <ul>
+                        <li><a href="#">
+                                <i class="fa fa-angle-right"></i>Home
+                            </a></li>
+                        <li><a href="#about">
+                                <i class="fa fa-angle-right"></i>About Us
+                            </a></li>
+                        <li><a href="#services">
+                                <i class="fa fa-angle-right"></i>Services
+                            </a></li>
+                        <li><a href="#postifolio">
+                                <i class="fa fa-angle-right"></i>Team
+                            </a></li>
+                        <li><a href="#blog">
+                                <i class="fa fa-angle-right"></i>Blog
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="col-xl-4 footer__item wow animated">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="">
+                                <i class="fa fa-angle-right"></i>Strategy & Research
+                            </a></li>
+                        <li><a href="">
+                                <i class="fa fa-angle-right"></i>Web Development
+                            </a></li>
+                        <li><a href="">
+                                <i class="fa fa-angle-right"></i>Web Solution
+                            </a></li>
+                        <li><a href="">
+                                <i class="fa fa-angle-right"></i>Digital Marketing
+                            </a></li>
+                        <li><a href="">
+                                <i class="fa fa-angle-right"></i>App Design
+                            </a></li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+        <div class="footer__copyright">
+            <div class="container">
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="footer__left">
+                        <p>Copyright © 2025 <span>VĂN PHÒNG CÔNG CHỨNG TÂM ĐỨC</span>  . All rights reserved.</p>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 	<div class="gototop js-top">

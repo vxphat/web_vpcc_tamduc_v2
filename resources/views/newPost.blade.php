@@ -21,7 +21,6 @@
                     <div class="main--content col-md-8 col-sm-7" data-sticky-content="true">
                         <div class="sticky-content-inner">
                             <div class="row">
-
                                 <!-- Books and Magazine Start -->
                                 <div class="col-md-12 ptop--30 pbottom--30">
                                     <!-- Post Items Start -->
@@ -55,7 +54,7 @@
 
 
                                                                 <div class="title">
-                                                                    <h2 class="h3" style="color:black"><a
+                                                                    <h2 class="h3" style="color:black; font-weight:600"><a
                                                                             href="{{ route('posts.show', $newPosts_category[$i] ) }}"
                                                                             class="btn-link">{{ $newPosts_category[$i]->title }}</a></h3>
                                                                 </div>
