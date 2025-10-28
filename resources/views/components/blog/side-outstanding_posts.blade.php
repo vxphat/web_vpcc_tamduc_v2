@@ -23,7 +23,7 @@ use App\Models\Category;
     <!-- List Widgets Start -->
     <div class="list--widget list--widget-1">
         <div class="list--widget-nav" data-ajax="tab">
-            <ul class="nav nav-justified">
+            <ul class="nav-justified">
                 <li>
                     <a  class="outstandPosts" href="#" data-ajax-action="load_widget_hot_news">Tin nóng</a>
                 </li>

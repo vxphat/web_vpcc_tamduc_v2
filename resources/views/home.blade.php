@@ -17,89 +17,109 @@
 						<div class="col-md-6">
 							<div class="row gutter--15">
 
-							@for ( $i = 0; $i <= 1; $i++)
-								<div class="col-xs-6 col-xss-12">
-									<!-- Post Item Start -->
-									<div class="post--item post--layout-1 post--title-large">
-										<div class="post--img">
-											<a href="{{ route('posts.show', $posts_new[$i][0]) }}"
-												class="thumb"><img
-													src="{{ asset($posts_new[$i][0]->image ? 'storage/' .$posts_new[$i][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
-													alt=""></a>
-											<a href="{{ route('categories.show', $posts_new[$i][0]->category) }}" class="cat">{{ $posts_new[$i][0]->category->name }}</a>
+					@if(isset($posts_new) && is_array($posts_new))
+						@for ( $i = 0; $i <= 1; $i++)
+							@if(isset($posts_new[$i]) && isset($posts_new[$i][0]))
+							<div class="col-xs-6 col-xss-12">
+								<!-- Post Item Start -->
+								<div class="post--item post--layout-1 post--title-large">
+									<div class="post--img">
+										<a href="{{ route('posts.show', $posts_new[$i][0]) }}"
+											class="thumb">
+											<img src="{{ asset($posts_new[$i][0]->image ? 'storage/' .$posts_new[$i][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
+												alt="{{ $posts_new[$i][0]->title }}" style="width: 100%; height: 180px; object-fit: cover;">
+										</a>
+										<a href="{{ route('categories.show', $posts_new[$i][0]->category) }}" class="cat">{{ $posts_new[$i][0]->category->name }}</a>
 
-											<a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
-											<div class="post--info">
-												<ul class="nav meta">
-													<li><a href="javascript:;">{{ $posts_new[$i][0]->author->name }}</a></li>
-													<li><a href="javascript:;">{{ $posts_new[$i][0]->created_at->locale('vi')->diffForHumans() }}</a></li>
-												</ul>
-												<div class="title">
-													<h2 class="h4"><a href="{{ route('posts.show', $posts_new[$i][0]) }}" class="btn-link">{{ $posts_new[$i][0]->title }}</a>
-													</h2>
-												</div>
+										<a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
+										<div class="post--info">
+											<ul class="meta">
+												<li><a href="javascript:;">{{ $posts_new[$i][0]->author->name }}</a></li>
+												<li><a href="javascript:;">{{ $posts_new[$i][0]->created_at->locale('vi')->diffForHumans() }}</a></li>
+											</ul>
+											<div class="title">
+												<h2 class="h4" style="line-height: 1.3; margin-bottom: 10px;">
+													<a href="{{ route('posts.show', $posts_new[$i][0]) }}" class="btn-link" 
+													   style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+													   {{ $posts_new[$i][0]->title }}
+													</a>
+												</h2>
 											</div>
 										</div>
 									</div>
-									<!-- Post Item End -->
 								</div>
-								@endfor
-						
+								<!-- Post Item End -->
+							</div>
+							@endif
+						@endfor
+					@endif
+					@if(isset($posts_new[2]) && isset($posts_new[2][0]))
+					<div class="col-sm-12 hidden-sm hidden-xs">
+						<!-- Post Item Start -->
+						<div class="post--item post--layout-1 post--title-larger">
+							<div class="post--img">
+								<a href="{{ route('posts.show', $posts_new[2][0]) }}"
+									class="thumb">
+									<img src="{{ asset($posts_new[2][0]->image ? 'storage/' .$posts_new[2][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
+										alt="{{ $posts_new[2][0]->title }}" style="width: 100%; height: 200px; object-fit: cover;">
+								</a>
 
-								<div class="col-sm-12 hidden-sm hidden-xs">
-									<!-- Post Item Start -->
-									<div class="post--item post--layout-1 post--title-larger">
-										<div class="post--img">
+								<a href="{{ route('categories.show', $posts_new[2][0]->category) }}" class="cat">{{ $posts_new[2][0]->category->name }}</a>
+
+								<a href="javascript:;" class="icon"><i class="fa fa-fire"></i></a>
+
+								<div class="post--info">
+									<ul class="meta">
+										<li><a href="javascript:;">{{ $posts_new[2][0]->author->name }}</a></li>
+										<li><a href="javascript:;">{{ $posts_new[2][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+									</ul>
+
+									<div class="title">
+										<h2 class="h4" style="line-height: 1.3; margin-bottom: 10px;">
 											<a href="{{ route('posts.show', $posts_new[2][0]) }}"
-												class="thumb"><img
-													src="{{ asset($posts_new[2][0]->image ? 'storage/' .$posts_new[2][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
-													style="height:200px" alt=""></a>
-
-											<a href="{{ route('categories.show', $posts_new[2][0]->category) }}" class="cat">{{ $posts_new[2][0]->category->name }}</a>
-
-											<a href="javascript:;" class="icon"><i class="fa fa-fire"></i></a>
-
-											<div class="post--info">
-												<ul class="nav meta">
-													<li><a href="javascript:;">{{ $posts_new[2][0]->author->name }}</a></li>
-													<li><a href="javascript:;">{{ $posts_new[2][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
-												</ul>
-
-												<div class="title">
-													<h2 class="h4"><a
-															href="{{ route('posts.show', $posts_new[2][0]) }}"
-															class="btn-link">{{ $posts_new[2][0]->title }}</a></h2>
-												</div>
-											</div>
-										</div>
+											   class="btn-link"
+											   style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+											   {{ $posts_new[2][0]->title }}
+											</a>
+										</h2>
 									</div>
-									<!-- Post Item End -->
 								</div>
-
 							</div>
 						</div>
+						<!-- Post Item End -->
+					</div>
+					@endif							</div>
+						</div>
 
+						@if(isset($posts_new[3]) && isset($posts_new[3][0]))
 						<div class="col-md-6">
 							<!-- Post Item Start -->
 							<div class="post--item post--layout-1 post--title-larger">
 								<div class="post--img">
 									<a href="{{ route('posts.show', $posts_new[3][0]) }}"
-										class="thumb"><img src="{{ asset($posts_new[3][0]->image ? 'storage/' .$posts_new[3][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}" alt=""></a>
+										class="thumb">
+										<img src="{{ asset($posts_new[3][0]->image ? 'storage/' .$posts_new[3][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}" 
+											 alt="{{ $posts_new[3][0]->title }}" 
+											 style="width: 100%; height: 250px; object-fit: cover;">
+									</a>
 
 									<a href="{{ route('categories.show', $posts_new[3][0]->category ) }}" class="cat">{{ $posts_new[3][0]->category->name }}</a>
 
 									<a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
 
 									<div class="post--info">
-										<ul class="nav meta">
+										<ul class="meta">
 											<li><a href="javascript:;">{{ $posts_new[3][0]->author->name }}</a></li>
 											<li><a href="javascript:;">{{ $posts_new[3][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 										</ul>
 
 										<div class="title">
-											<h2 class="h4"><a
-													href="{{ route('posts.show', $posts_new[3][0]) }}"
-													class="btn-link">{{ $posts_new[3][0]->title }}</a>
+											<h2 class="h4" style="line-height: 1.3; margin-bottom: 10px;">
+												<a href="{{ route('posts.show', $posts_new[3][0]) }}"
+												   class="btn-link"
+												   style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+												   {{ $posts_new[3][0]->title }}
+												</a>
 											</h2>
 										</div>
 									</div>
@@ -107,6 +127,7 @@
 							</div>
 							<!-- Post Item End -->
 						</div>
+						@endif
 
 					</div>
 				</div>
@@ -129,7 +150,7 @@
 
 								<!-- Post Items Start -->
 								<div class="post--items post--items-2" data-ajax-content="outer">
-									<ul class="nav row gutter--15" data-ajax-content="inner">
+									<ul class="row gutter--15" data-ajax-content="inner">
 								
 									
 										<li class="col-xs-12">
@@ -143,10 +164,12 @@
 													<a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="javascript:;">{{ $post_category_home0[0]->author->name }}</a></li>
+														<!-- <ul class="meta">
+															<li><a href="javascript:;">{{ $post_category_home0[0]->author->name }}
+																
+															</a></li>
 															<li><a href="javascript:;">{{ $post_category_home0[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
-														</ul>
+														</ul> -->
 
 														<div class="title">
 															<h3 class="h4"><a
@@ -179,7 +202,7 @@
 																alt=""></a>
 
 														<div class="post--info">
-															<ul class="nav meta">
+															<ul class="meta">
 																<li><a href="javascript:;">{{ $post_category_home0[$i]->author->name }}</a></li>
 																<li><a href="javascript:;">{{ $post_category_home0[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 															</ul>
@@ -228,7 +251,7 @@
 													<a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home1[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home1[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -244,34 +267,37 @@
 											</div>
 											<!-- Post Item End -->
 										</li>
-										@for ($i = 1; $i <= 5; $i++)
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="{{ route('posts.show', $post_category_home1[$i]) }}"
-														class="thumb"><img
-															src="{{ asset($post_category_home1[$i]->image ? 'storage/' . $post_category_home1[$i]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
-															alt=""></a>
+										@if(isset($post_category_home1) && count($post_category_home1) > 0)
+											@foreach($post_category_home1 as $index => $post)
+												@if($index >= 6) @break @endif
+												<li>
+													<!-- Post Item Start -->
+													<div class="post--item post--layout-3">
+														<div class="post--img">
+															<a href="{{ route('posts.show', $post) }}"
+																class="thumb"><img
+																	src="{{ asset($post->image ? 'storage/' . $post->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
+																	alt=""></a>
 
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="javascript:;">{{ $post_category_home1[$i]->author->name }}</a></li>
-															<li><a href="javascript:;">{{ $post_category_home1[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
-														</ul>
+															<div class="post--info">
+																<ul class="meta">
+																	<li><a href="javascript:;">{{ $post->author->name }}</a></li>
+																	<li><a href="javascript:;">{{ $post->created_at->locale('vi')->diffForHumans()  }}</a></li>
+																</ul>
 
-														<div class="title">
-															<h3 class="h4"><a
-																	href="{{ route('posts.show', $post_category_home1[$i]) }}"
-																	class="btn-link">{{ $post_category_home1[$i]->title }}</a>
-															</h3>
+																<div class="title">
+																	<h3 class="h4"><a
+																			href="{{ route('posts.show', $post) }}"
+																			class="btn-link">{{ $post->title }}</a>
+																	</h3>
+																</div>
+															</div>
 														</div>
 													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
-										@endfor
+													<!-- Post Item End -->
+												</li>
+											@endforeach
+										@endif
 
 									</ul>
 
@@ -305,7 +331,7 @@
 													<a href="javascript:;" class="icon"><i class="fa fa-star-o"></i></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home2[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home2[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -369,7 +395,7 @@
 																		alt=""></a>
 
 																<div class="post--info">
-																	<ul class="nav meta">
+																	<ul class="meta">
 																		
 																		<li><a href="javascript:;">{{ $post_category_home2[$i]->author->name }}</a></li>
 																		<li><a href="javascript:;">{{ $post_category_home2[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
@@ -423,7 +449,7 @@
 													<a href="{{ route('categories.show', $post_category_home3[0]->category) }}" class="icon"><i class="fa fa-fire"></i></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home3[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home3[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -457,7 +483,7 @@
 																alt=""></a>
 
 														<div class="post--info">
-															<ul class="nav meta">
+															<ul class="meta">
 																<li><a href="javascript:;">{{ $post_category_home3[$i]->author->name }}</a></li>
 																<li><a href="javascript:;">{{ $post_category_home3[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 															</ul>
@@ -505,7 +531,7 @@
 													<a href="{{ route('categories.show', $post_category_home4[0]->category) }}" class="icon"><i class="fa fa-eye"></i></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home4[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home4[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -533,7 +559,7 @@
 															alt=""></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home4[$i]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home4[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -588,7 +614,7 @@
 															alt=""></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $outstanding_post->created_at->locale('vi')->diffForHumans() }}</a></li>
 															<li><a  href="javascript:;"><i class="fa fm fa-comments"></i>{{ count($outstanding_post->comments) }}</a></li>
                                        						<li><span><i class="fa fm fa-eye"></i>{{ $outstanding_post->views }}</span></li>
@@ -786,7 +812,7 @@
 									<a href="{{ route('categories.show', $post_category_home5[0]->category) }}" class="icon"><i class="fa fa-eye"></i></a>
 
 									<div class="post--info">
-										<ul class="nav meta">
+										<ul class="meta">
 											<li><a href="javascript:;">{{ $post_category_home5[0]->author->name }}</a></li>
 											<li><a href="javascript:;">{{ $post_category_home5[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 										</ul>
@@ -819,7 +845,7 @@
 													alt=""></a>
 
 											<div class="post--info">
-												<ul class="nav meta">
+												<ul class="meta">
 													<li><a href="javascript:;">{{ $post_category_home5[$i]->author->name }}</a></li>
 													<li><a href="javascript:;">{{ $post_category_home5[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 												</ul>
@@ -884,7 +910,7 @@
 													<a href="{{ route('categories.show', $post_category_home6[0]->category) }}" class="icon"><i class="fa fa-star-o"></i></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home6[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home6[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -911,7 +937,7 @@
 															alt=""></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home6[$i]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home6[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -963,7 +989,7 @@
 													<a href="{{ route('categories.show', $post_category_home7[0]->category) }}" class="icon"><i class="fa fa-heart-o"></i></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home7[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home7[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -998,7 +1024,7 @@
 															alt=""></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home7[$i]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home7[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -1045,7 +1071,7 @@
 													<a href="{{ route('categories.show', $post_category_home8[0]->category) }}" class="icon"><i class="fa fa-star-o"></i></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home8[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home8[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -1106,7 +1132,7 @@
 																		alt=""></a>
 
 																<div class="post--info">
-																	<ul class="nav meta">
+																	<ul class="meta">
 																		<li><a href="javascript:;">{{ $post_category_home8[$i]->author->name }}</a></li>
 																		<li><a href="javascript:;">{{ $post_category_home8[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 																	</ul>
@@ -1158,7 +1184,7 @@
 													<a href="{{ route('categories.show', $post_category_home9[0]->category) }}" class="icon"><i class="fa fa-eye"></i></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home9[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home9[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -1184,7 +1210,7 @@
 															alt=""></a>
 
 													<div class="post--info">
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><a href="javascript:;">{{ $post_category_home9[$i]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home9[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
@@ -1342,10 +1368,16 @@
 
 													<div class="post--info">
 														<div class="title">
-															<h3 class="h4"><a href="{{ route('posts.show', $top_commnent->post ) }}">{{ $top_commnent->the_comment }}</a> </h3>
+															<h3 class="h4">
+																@if($top_commnent->post)
+																	<a href="{{ route('posts.show', $top_commnent->post) }}">{{ $top_commnent->the_comment }}</a>
+																@else
+																	<span>{{ $top_commnent->the_comment }}</span>
+																@endif
+															</h3>
 														</div>
 
-														<ul class="nav meta">
+														<ul class="meta">
 															<li><span> {{ $top_commnent->user->name }}
 																</span></li>
 															<li><span>{{ $top_commnent->created_at->format('d/m/Y') }}</span></li>
@@ -1419,6 +1451,110 @@
 		</div>
 	</div>
 </div>
+
+<!-- Custom CSS for layout fixes -->
+<style>
+	/* Prevent image overflow and maintain aspect ratio */
+	.post--item .post--img .thumb img {
+		transition: transform 0.3s ease;
+	}
+	
+	.post--item .post--img .thumb:hover img {
+		transform: scale(1.05);
+	}
+	
+	/* Remove conflicting flexbox styles that cause overlapping */
+	.post--item {
+		position: relative;
+		margin-bottom: 15px;
+		/* Remove flexbox styles to prevent overlapping */
+	}
+	
+	.post--item .post--img {
+		position: relative;
+		overflow: hidden;
+		/* Remove flex-grow to prevent overlapping */
+	}
+	
+	/* Fix spacing between post items */
+	.post--items .row .col-xs-6,
+	.post--items .row .col-md-6,
+	.post--items .row .col-sm-12 {
+		margin-bottom: 20px;
+		padding-left: 7.5px;
+		padding-right: 7.5px;
+	}
+	
+	/* Ensure proper clearfix */
+	.post--items .row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	
+	/* Fix responsive issues */
+	@media (max-width: 768px) {
+		.post--item .post--img .thumb img {
+			height: 200px !important;
+		}
+		
+		.col-xs-6.col-xss-12 {
+			margin-bottom: 20px;
+		}
+		
+		.post--items .row .col-xs-6 {
+			float: left;
+			width: 50%;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.post--item .post--img .thumb img {
+			height: 180px !important;
+		}
+		
+		.post--item .post--info .title h2 {
+			font-size: 16px !important;
+			line-height: 1.2 !important;
+		}
+		
+		.post--items .row .col-xs-6 {
+			float: none;
+			width: 100%;
+		}
+	}
+	
+	/* Text truncation for better layout */
+	.post--item .post--info .title a {
+		word-wrap: break-word;
+		hyphens: auto;
+	}
+	
+	/* Ensure meta items don't break layout */
+	.post--item .post--info .meta {
+		display: block;
+	}
+	
+	.post--item .post--info .meta li {
+		margin-right: 10px;
+		margin-bottom: 5px;
+		display: inline-block;
+	}
+	
+	/* Container overflow fix */
+	.container, .row {
+		overflow-x: hidden;
+	}
+	
+	.post--items {
+		margin-bottom: 30px;
+	}
+	
+	/* Prevent floating issues */
+	.post--items .col-md-6:nth-child(odd) {
+		clear: left;
+	}
+</style>
 	
 @endsection
 

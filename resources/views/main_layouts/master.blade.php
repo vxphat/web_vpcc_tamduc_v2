@@ -278,7 +278,7 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 					<ul class="nav">
 						@foreach ($posts_new as $posts_new)
 							<li>
-								<h3 class="h3"><a href="{{ route('posts.show', $posts_new[0]) }}">{{ $posts_new[0]->title }}</a></h3>
+								<h3 class="h3"><a href="{{ route('posts.show', $posts_new[0]) }}">{{ $posts_new[0]->title }} </a></h3>
 							</li>
 						@endforeach
 					</ul>
